@@ -1,5 +1,5 @@
 ---
-title: "友情链接"
+title: '友情链接'
 badge: false
 displayCopyright: false
 share: false
@@ -38,12 +38,13 @@ share: false
 以上友链按添加时间先后排序。
 {{< /notice >}}
 
-<div class="mytag">
-<p style="text-align:center"><b>本站信息</b></p>
-<p style="margin:25px">
-   <b>网站名称：我有一只猫</b><br>
-   <b>网站地址：https://ztygcs.github.io/</b><br>
-   <b>网站标志：https://ztygcs.github.io/icons/android-chrome-512x512.png</b><br>
-   <b>网站描述：学习笔记，生活杂碎</b>
-</p>
-</div>
+{{< card >}}
+{{< align center "本站信息" >}}
+网站名称：我有一只猫
+
+网站地址：https://ztygcs.github.io/
+
+网站标志：https://ztygcs.github.io/icons/android-chrome-512x512.png
+
+网站描述：学习笔记，生活杂碎
+{{< /card >}}

@@ -1,0 +1,8 @@
+.filenamestyle {
+  background: antiquewhite;
+  border-radius: 4px;
+}
+[data-theme='dark'] .filenamestyle {
+  background: rgba(255, 228, 196, 0.5);
+  border-radius: 4px;
+}
