@@ -7,25 +7,75 @@ tags: [Shortcodes, Hugo]
 dropCap: false
 ---
 
+> MemE 通过 Hugo 管道实现使用 SCSS 生成 CSS，而非静态的 CSS 文件，同时提供一个 `\_custom.scss` 文件以供用户定制。
+>
+> 直接新建一个 ~/blog/assets/scss/custom/\_custom.scss 并将你自己的样式加入其中，就能覆盖主题的 ~/blog/themes/meme/assets/scss/custom/\_custom.scss 文件，且其会正确地被应用。
+>
+> 事实上，在 Hugo 中你可以覆盖主题的任何模板，见这个非官方的镜像网页：https://gohugobrasil.netlify.com/themes/customizing/
+
 > 在这里自定义的组件均采用`shortcodes + 自定义样式`实现，其中：
-> .html 文件定义在\blog\layouts\shortcodes 文件夹 📂 下，样式文件定义在\blog\assets\scss\custom 文件夹 📂 下。
+> `.html` 文件定义在`\blog\layouts\shortcodes` 文件夹 📂 下，样式文件定义在`\blog\assets\scss\custom` 文件夹 📂 下。
 > 注意：
-> 1. 若不存在对应文件夹则自行创建
-> 2. 所有的独立样式文件需要import到_custom.scss文件中
+>
+> 1. 若不存在对应文件夹\文件则自行创建
+> 2. 所有的独立样式文件需要 import 到 `\_custom.scss` 文件中
 > 3. 具体使用方法请查看每个组件的详细使用教程
-
-{{<notice notice-info>}}
-
-- MemE 通过 Hugo 管道实现使用 SCSS 生成 CSS，而非静态的 CSS 文件，同时提供一个 \_custom.scss 文件以供用户定制。
-- 直接新建一个 ~/blog/assets/scss/custom/\_custom.scss 并将你自己的样式加入其中，就能覆盖主题的 ~/blog/themes/meme/assets/scss/custom/\_custom.scss 文件，且其会正确地被应用。
-- 事实上，在 Hugo 中你可以覆盖主题的任何模板，见这个非官方的镜像网页：https://gohugobrasil.netlify.com/themes/customizing/
-  {{</notice>}}
 
 [参考：《自定义 Hugo Shortcodes 简码》](https://guanqr.com/tech/website/hugo-shortcodes-customization/#quote-center)
 
-## 诗歌引用格式
+## 排版
 
-在`blog\layouts\shortcodes`文件夹📂下新建 {{<filename quote-center.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes`下新建 {{<filename align.html>}} 文件，其内容如下：
+
+```html
+<p style="text-align:{{ index .Params 0 }}">{{ index .Params 1 | markdownify }}</p>
+```
+
+2. 示例：
+
+```html
+{{</* align left "文字居左" */>}}
+```
+
+{{< align left "文字居左" >}}
+
+```html
+{{</* align center "文字居中" */>}}
+```
+
+{{< align center "文字居中" >}}
+
+```html
+{{</* align right "文字居右" */>}}
+```
+
+{{< align right "文字居右" >}}
+
+## 下划线
+
+1. 在`blog\layouts\shortcodes`下新建 {{<filename underline.html>}} 文件，其内容如下：
+
+```html
+<span style="border-bottom: {{ .Get "color" }} 2px solid">
+  {{ .Get "content" }}
+</span>
+```
+
+2. 示例
+
+```html
+{{</* underline color="#ff0000" content="谁在用琵琶弹奏一曲东风破" */>}}
+<br/>
+{{</* underline color="#ff2200" content="岁月在墙上剥落看见小时候" */>}}
+```
+
+{{< underline color="#ffdd00" content="谁在用琵琶弹奏一曲东风破" >}}
+<br/>
+{{< underline color="#ff2200" content="岁月在墙上剥落看见小时候" >}}
+
+## 诗歌引用
+
+1. 在`blog\layouts\shortcodes`下新建 {{<filename quote-center.html>}} 文件，其内容如下：
 
 ```html
 <blockquote class="quote-center">
@@ -36,7 +86,7 @@ dropCap: false
 </blockquote>
 ```
 
-接着在 `\blog\assets\scss\custom` 文件夹📂下新建{{<filename _shortcodes.scss>}} 文件并写入以下代码
+2. 在 `\blog\assets\scss\custom` 下新建{{<filename _shortcodes.scss>}} 文件，其内容如下：
 
 ```scss
 // 诗歌引用格式
@@ -72,12 +122,13 @@ blockquote.quote-center {
 }
 ```
 
-在`\blog\assets\scss\custom\_custom.scss`中导入`_shortcodes.scss`
+3. 在`\blog\assets\scss\custom\_custom.scss`中导入`_shortcodes.scss`
 
 ```scss
-@import "shortcodes";
+@import 'shortcodes';
 ```
-示例：
+
+4. 示例：
 
 ```html
 {{</* quote-center */>}}
@@ -89,9 +140,9 @@ blockquote.quote-center {
 伟大的小丑帕格里亚齐来了<br/>去看他的表演吧<br/>他能让你振作起来
 {{< /quote-center >}}
 
-## 卡片风格
+## 卡片
 
-在`blog\layouts\shortcodes`文件夹📂下新建 {{<filename card.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes`下新建 {{<filename card.html>}} 文件，其内容如下：
 
 ```html
 {{- $raw := (markdownify .Inner | chomp) -}} {{- $block := findRE
@@ -102,7 +153,7 @@ $raw 1 -}}
 </div>
 ```
 
-接着在 `\blog\assets\scss\custom` 文件夹📂下新建{{<filename _card.scss>}} 文件并写入以下代码
+2. 在 `\blog\assets\scss\custom` 下新建{{<filename _card.scss>}} 文件，其内容如下：
 
 ```scss
 // 卡片样式
@@ -119,26 +170,31 @@ $raw 1 -}}
 }
 ```
 
-在`\blog\assets\scss\custom\_custom.scss`中导入`_card.scss`
+3. 在`\blog\assets\scss\custom\_custom.scss`中导入`_card.scss`
 
 ```scss
-@import "card";
+@import 'card';
 ```
 
-示例：
+4. 示例：
 
 ```html
 {{</* card */>}}
-"少年贪玩，青年迷恋爱情，壮年汲汲于成名成家，暮年自安于自欺欺人。人寿几何，顽铁能炼成的精金，能有多少？但不同程度的锻炼，必有不同程度的成绩；不同程度的纵欲放肆，必积下不同程度的顽劣。"<br />上苍不会让所有幸福集中到某个人身上，得到爱情未必拥有金钱；拥有金钱未必得到快乐；得到快乐未必拥有健康；拥有健康未必一切都会如愿以偿。保持知足常乐的心态才是淬炼心智、净化心灵的最佳途径。一切快乐的享受都属于精神，这种快乐把忍受变为享受，是精神对于物质的胜利，这便是人生哲学。"
+缓缓飘落的枫叶像思念
+<br />
+我点燃烛火温暖岁末的秋天
 {{</* /card */>}}
 ```
+
 {{< card >}}
-"少年贪玩，青年迷恋爱情，壮年汲汲于成名成家，暮年自安于自欺欺人。人寿几何，顽铁能炼成的精金，能有多少？但不同程度的锻炼，必有不同程度的成绩；不同程度的纵欲放肆，必积下不同程度的顽劣。"<br />上苍不会让所有幸福集中到某个人身上，得到爱情未必拥有金钱；拥有金钱未必得到快乐；得到快乐未必拥有健康；拥有健康未必一切都会如愿以偿。保持知足常乐的心态才是淬炼心智、净化心灵的最佳途径。一切快乐的享受都属于精神，这种快乐把忍受变为享受，是精神对于物质的胜利，这便是人生哲学。"
+缓缓飘落的枫叶像思念
+<br />
+我点燃烛火温暖岁末的秋天
 {{< /card >}}
 
-## 文字渐变色
+## 文字渐变
 
-在 `\blog\assets\scss\custom` 文件夹📂下新建{{<filename _colorfont.scss>}} 文件并写入以下代码
+1. 在 `\blog\assets\scss\custom` 下新建{{<filename _colorfont.scss>}} 文件，其内容如下：
 
 ```scss
 // 文字渐变色
@@ -150,12 +206,13 @@ $raw 1 -}}
 }
 ```
 
-在`\blog\assets\scss\custom\_custom.scss`中导入`_colorfont.scss`
+2. 在`\blog\assets\scss\custom\_custom.scss`中导入`_colorfont.scss`
 
 ```scss
-@import "colorfont";
+@import 'colorfont';
 ```
-示例：
+
+3. 示例：
 
 ```html
 <font class="colorfulfont"> 伟大的小丑帕格里亚齐来了<br />去看他的表演吧<br />他能让你振作起来 </font>
@@ -165,85 +222,24 @@ $raw 1 -}}
 伟大的小丑帕格里亚齐来了<br/>去看他的表演吧<br/>他能让你振作起来
 </font>
 
-## 添加博客已运行时间
+## hugo-notice
 
-[参考网址](http://www.vipshan.com/zhoubian/79.html)
-
-在文件`\themes\meme\assets\js\custom.js`中添加自定义的 js 代码
-
-```js
-//计算博客运行时间（2020.06.03添加）
-function siteTime() {
-  window.setTimeout('siteTime()', 1000)
-  var seconds = 1000
-  var minutes = seconds * 60
-  var hours = minutes * 60
-  var days = hours * 24
-  var years = days * 365
-  var today = new Date()
-  var todayYear = today.getFullYear()
-  var todayMonth = today.getMonth() + 1
-  var todayDate = today.getDate()
-  var todayHour = today.getHours()
-  var todayMinute = today.getMinutes()
-  var todaySecond = today.getSeconds()
-  var t1 = Date.UTC(2019, 11, 26, 19, 06, 00)
-  var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond)
-  var diff = t2 - t1
-  var diffYears = Math.floor(diff / years)
-  var diffDays = Math.floor(diff / days - diffYears * 365)
-  var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours)
-  var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes)
-  var diffSeconds = Math.floor(
-    (diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds
-  )
-
-  if (diffYears == 0) {
-    document.getElementById('sitetime').innerHTML =
-      ' ' + diffDays + ' 天 ' + diffHours + ' 小时 ' + diffMinutes + ' 分钟 ' + diffSeconds + ' 秒'
-  } else {
-    document.getElementById('sitetime').innerHTML =
-      ' ' + diffYears + ' 年 ' + diffDays + ' 天 ' + diffHours + ' 小时 ' + diffMinutes + ' 分钟 ' + diffSeconds + ' 秒'
-  }
-}
-siteTime()
-```
-
-其中`var t1 = Date.UTC(2019, 11, 26, 19, 06, 00)`设置为需要计算的起始日期，如时间是：2020 年 01 月 01 号 00 点 00 分 00 秒则设置为：
-
-```js
-var t1 = Date.UTC(2020, 01, 01, 00, 00, 00)
-```
-
-<hr>
-DEMO:
-
-```html
-运行时间<span id="sitetime" style="color:#fb7312"></span>
-```
-
-运行时间<span id="sitetime" style="color:#fb7312"></span>
-
-## 添加 hugo-notice
-
-1. 在`blog\layouts\shortcodes`文件夹📂下新建 {{<filename notice.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes`下新建 {{<filename notice.html>}} 文件，其内容如下：
 
 ```html
 <!--https://github.com/martignoni/hugo-notice-->
-{{- $noticeType := .Get 0 -}}
-
-{{- $raw := (markdownify .Inner | chomp) -}}
-
-{{- $block := findRE "(?is)^<(?:address|article|aside|blockquote|canvas|dd|div|dl|dt|fieldset|figcaption|figure|footer|form|h(?:1|2|3|4|5|6)|header|hgroup|hr|li|main|nav|noscript|ol|output|p|pre|section|table|tfoot|ul|video)\\b" $raw 1 -}}
-
-{{ $icon := (replace (index $.Site.Data.SVG $noticeType) "icon" "icon notice-icon") }}
+{{- $noticeType := .Get 0 -}} {{- $raw := (markdownify .Inner | chomp) -}} {{- $block := findRE
+"(?is)^<(?:address|article|aside|blockquote|canvas|dd|div|dl|dt|fieldset|figcaption|figure|footer|form|h(?:1|2|3|4|5|6)|header|hgroup|hr|li|main|nav|noscript|ol|output|p|pre|section|table|tfoot|ul|video)\\b"
+$raw 1 -}} {{ $icon := (replace (index $.Site.Data.SVG $noticeType) "icon" "icon notice-icon") }}
 <div class="notice {{ $noticeType }}" {{ if len .Params | eq 2 }} id="{{ .Get 1 }}" {{ end }}>
-    <div class="notice-title">{{ $icon | safeHTML }}</div>
-    {{- if or $block (not $raw) }}{{ $raw }}{{ else }}<p>{{ $raw }}</p >{{ end -}}
+  <div class="notice-title">{{ $icon | safeHTML }}</div>
+  {{- if or $block (not $raw) }}{{ $raw }}{{ else }}
+  <p>{{ $raw }}</p>
+  {{ end -}}
 </div>
 ```
 
-2. 在 `\blog\assets\scss\custom\_shortcodes.scss` 文件下👇写入以下代码
+2. 在 `\blog\assets\scss\custom\_shortcodes.scss` 下 👇 写入以下代码
 
 ```scss
 .notice {
@@ -334,8 +330,9 @@ DEMO:
 3. 在`\blog\assets\scss\custom\_custom.scss`中导入`_shortcodes.scss`（前面已经导入则此处无需重复导入）
 
 ```scss
-@import "shortcodes";
+@import 'shortcodes';
 ```
+
 4. 在`\themes\meme\data\SVG.toml`文件中插入图标
 
 ```svg
@@ -344,10 +341,9 @@ notice-warning = '<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="
 notice-info = '<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512"><path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/></svg>'
 notice-note = '<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512"><path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zm-248 50a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z"/></svg>'
 notice-tip = '<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512"><path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z"/></svg>'
-
 ```
 
-示例：
+5. 示例：
 
 ```
 {{</*notice notice-warning*/>}}
@@ -388,3 +384,88 @@ This is tip
 {{<notice notice-tip>}}
 This is tip
 {{</notice>}}
+
+## github 风格
+
+1. 在`blog\layouts\shortcodes`下新建 {{<filename github.html>}} 文件，其内容如下：
+
+```html
+<div class="github">
+    <div class="logo">
+        {{ replace $.Site.Data.SVG.repository "icon" "icon github-icon" | safeHTML }}
+        <a class="name" href={{ .Get "link" }} target="_blank">{{ .Get "name" }}</a>
+    </div>
+    <div class="description">{{ .Get "description" }}</div>
+    <div class="language">
+        <span class="language-color" style="background-color: {{ .Get "color" }}"></span>
+        <span class="language-name">{{ .Get "language" }}</span>
+    </div>
+</div>
+```
+
+2. 在 `\blog\assets\scss\custom\_shortcodes.scss` 中加入以下代码：
+
+```scss
+.github {
+  border: 1px solid var(--color-contrast-low);
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  padding: 1em;
+  .github-icon {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.5em;
+    margin-bottom: 0.2em;
+    fill: var(--color-contrast-high);
+    transition: all 0.5s;
+  }
+  .name {
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .description {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    color: var(--color-contrast-high);
+    text-align: justify;
+    font-size: 90%;
+    transition: all 0.5s;
+  }
+  .language-color {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+  }
+  .language-name {
+    color: var(--color-contrast-high);
+    font-size: 90%;
+    margin-left: 0.5em;
+    transition: all 0.5s;
+  }
+}
+```
+
+3. 在`\themes\meme\data\SVG.toml`文件中插入图标
+
+```toml
+repository = '<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 2.5C2 1.83696 2.26339 1.20107 2.73223 0.732233C3.20108 0.263392 3.83696 0 4.5 0L13.25 0C13.4489 0 13.6397 0.0790176 13.7803 0.21967C13.921 0.360322 14 0.551088 14 0.75V13.25C14 13.4489 13.921 13.6397 13.7803 13.7803C13.6397 13.921 13.4489 14 13.25 14H10.75C10.5511 14 10.3603 13.921 10.2197 13.7803C10.079 13.6397 10 13.4489 10 13.25C10 13.0511 10.079 12.8603 10.2197 12.7197C10.3603 12.579 10.5511 12.5 10.75 12.5H12.5V10.5H4.5C4.30308 10.5 4.11056 10.5582 3.94657 10.6672C3.78257 10.7762 3.65442 10.9312 3.57816 11.1128C3.50191 11.2943 3.48096 11.4943 3.51793 11.6878C3.5549 11.8812 3.64816 12.0594 3.786 12.2C3.92524 12.3422 4.0023 12.5338 4.00024 12.7328C3.99818 12.9318 3.91716 13.1218 3.775 13.261C3.63285 13.4002 3.4412 13.4773 3.24222 13.4752C3.04325 13.4732 2.85324 13.3922 2.714 13.25C2.25571 12.7829 1.99929 12.1544 2 11.5V2.5ZM12.5 1.5V9H4.5C4.144 9 3.806 9.074 3.5 9.208V2.5C3.5 2.23478 3.60536 1.98043 3.79289 1.79289C3.98043 1.60536 4.23478 1.5 4.5 1.5H12.5ZM5 12.25V15.5C5 15.5464 5.01293 15.5919 5.03734 15.6314C5.06175 15.6709 5.09667 15.7028 5.1382 15.7236C5.17972 15.7444 5.22621 15.7532 5.27245 15.749C5.31869 15.7448 5.36286 15.7279 5.4 15.7L6.85 14.613C6.89328 14.5805 6.94591 14.563 7 14.563C7.05409 14.563 7.10673 14.5805 7.15 14.613L8.6 15.7C8.63714 15.7279 8.68131 15.7448 8.72755 15.749C8.77379 15.7532 8.82028 15.7444 8.8618 15.7236C8.90333 15.7028 8.93826 15.6709 8.96266 15.6314C8.98707 15.5919 9 15.5464 9 15.5V12.25C9 12.1837 8.97366 12.1201 8.92678 12.0732C8.87989 12.0263 8.81631 12 8.75 12H5.25C5.1837 12 5.12011 12.0263 5.07322 12.0732C5.02634 12.1201 5 12.1837 5 12.25Z"/></svg>'
+```
+
+4. 示例：
+
+```html
+{{</* github
+    name="hugo-theme-meme"
+    link="https://github.com/reuixiy/hugo-theme-meme"
+    description="MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。MemE 主题专注于优雅、简约、现代，以及代码的正确性。同时，希望你将像欣赏一个模因一样欣赏 MemE，希望你将像分享一个模因一样分享 MemE，就像你的博客和文章所做的那样😝！"
+    color="#E34C26"
+    language="HTML"
+*/>}}
+```
+
+{{< github name="hugo-theme-meme" link="https://github.com/reuixiy/hugo-theme-meme" description="MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。MemE 主题专注于优雅、简约、现代，以及代码的正确性。同时，希望你将像欣赏一个模因一样欣赏 MemE，希望你将像分享一个模因一样分享 MemE，就像你的博客和文章所做的那样😝！" color="#E34C26" language="HTML" >}}
