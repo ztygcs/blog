@@ -13,19 +13,26 @@ dropCap: false
 >
 > 事实上，在 Hugo 中你可以覆盖主题的任何模板，见这个非官方的镜像网页：https://gohugobrasil.netlify.com/themes/customizing/
 
-> 在这里自定义的组件均采用`shortcodes + 自定义样式`实现，其中：
-> `.html` 文件定义在`\blog\layouts\shortcodes` 文件夹 📂 下，样式文件定义在`\blog\assets\scss\custom` 文件夹 📂 下。
-> 注意：
->
-> 1. 若不存在对应文件夹\文件则自行创建
-> 2. 所有的独立样式文件需要 import 到 `\_custom.scss` 文件中
-> 3. 具体使用方法请查看每个组件的详细使用教程
+在这里自定义的组件均采用`shortcodes + 自定义样式`的方式实现，其中：
+
+|  文件   |        文件路径 📂        |
+| :-----: | :-----------------------: |
+| `.html` | ~\blog\layouts\shortcodes |
+| `.scss` | ~\blog\assets\scss\custom |
+
+{{<notice notice-note>}}
+
+1. 文中所涉及到的文件夹\文件若不存在则需自行创建
+2. 所有的独立样式文件需要 import 到 `\_custom.scss>` 文件中
+3. 具体使用方法请查看每个组件的详细使用教程
+
+{{</notice>}}
 
 [参考：《自定义 Hugo Shortcodes 简码》](https://guanqr.com/tech/website/hugo-shortcodes-customization/#quote-center)
 
 ## 排版
 
-1. 在`blog\layouts\shortcodes`下新建 {{<filename align.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes\align.html`中增加以下内容：
 
 ```html
 <p style="text-align:{{ index .Params 0 }}">{{ index .Params 1 | markdownify }}</p>
@@ -53,7 +60,7 @@ dropCap: false
 
 ## 下划线
 
-1. 在`blog\layouts\shortcodes`下新建 {{<filename underline.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes\underline.html`中增加以下内容：
 
 ```html
 <span style="border-bottom: {{ .Get "color" }} 2px solid">
@@ -64,7 +71,7 @@ dropCap: false
 2. 示例
 
 ```html
-{{</* underline color="#ff0000" content="谁在用琵琶弹奏一曲东风破" */>}}
+{{</* underline color="#ffdd00" content="谁在用琵琶弹奏一曲东风破" */>}}
 <br/>
 {{</* underline color="#ff2200" content="岁月在墙上剥落看见小时候" */>}}
 ```
@@ -75,7 +82,7 @@ dropCap: false
 
 ## 诗歌引用
 
-1. 在`blog\layouts\shortcodes`下新建 {{<filename quote-center.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes\quote-center.html`中增加以下内容：
 
 ```html
 <blockquote class="quote-center">
@@ -86,7 +93,7 @@ dropCap: false
 </blockquote>
 ```
 
-2. 在 `\blog\assets\scss\custom` 下新建{{<filename _shortcodes.scss>}} 文件，其内容如下：
+2. 在 `\blog\assets\scss\custom\_shortcodes.scss` 中增加以下内容：
 
 ```scss
 // 诗歌引用格式
@@ -122,7 +129,7 @@ blockquote.quote-center {
 }
 ```
 
-3. 在`\blog\assets\scss\custom\_custom.scss`中导入`_shortcodes.scss`
+3. 在`\blog\assets\scss\custom\_custom.scss`中导入样式
 
 ```scss
 @import 'shortcodes';
@@ -142,7 +149,7 @@ blockquote.quote-center {
 
 ## 卡片
 
-1. 在`blog\layouts\shortcodes`下新建 {{<filename card.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes\card.html`中增加以下内容：
 
 ```html
 {{- $raw := (markdownify .Inner | chomp) -}} {{- $block := findRE
@@ -153,7 +160,7 @@ $raw 1 -}}
 </div>
 ```
 
-2. 在 `\blog\assets\scss\custom` 下新建{{<filename _card.scss>}} 文件，其内容如下：
+2. 在 `\blog\assets\scss\custom\_card.scss` 中增加以下内容：
 
 ```scss
 // 卡片样式
@@ -170,7 +177,7 @@ $raw 1 -}}
 }
 ```
 
-3. 在`\blog\assets\scss\custom\_custom.scss`中导入`_card.scss`
+3. 在`\blog\assets\scss\custom\_custom.scss`中导入样式
 
 ```scss
 @import 'card';
@@ -194,10 +201,9 @@ $raw 1 -}}
 
 ## 文字渐变
 
-1. 在 `\blog\assets\scss\custom` 下新建{{<filename _colorfont.scss>}} 文件，其内容如下：
+1. 在 `\blog\assets\scss\custom\_colorfont.scss` 中增加以下内容：
 
 ```scss
-// 文字渐变色
 .colorfulfont {
   background: linear-gradient(to right, red, #45ed63);
   -webkit-background-clip: text;
@@ -206,7 +212,7 @@ $raw 1 -}}
 }
 ```
 
-2. 在`\blog\assets\scss\custom\_custom.scss`中导入`_colorfont.scss`
+2. 在`\blog\assets\scss\custom\_custom.scss`中导入样式
 
 ```scss
 @import 'colorfont';
@@ -224,7 +230,7 @@ $raw 1 -}}
 
 ## hugo-notice
 
-1. 在`blog\layouts\shortcodes`下新建 {{<filename notice.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes\notice.html`中增加以下内容：
 
 ```html
 <!--https://github.com/martignoni/hugo-notice-->
@@ -239,7 +245,7 @@ $raw 1 -}} {{ $icon := (replace (index $.Site.Data.SVG $noticeType) "icon" "icon
 </div>
 ```
 
-2. 在 `\blog\assets\scss\custom\_shortcodes.scss` 下 👇 写入以下代码
+2. 在 `\blog\assets\scss\custom\_shortcodes.scss` 中增加以下内容：
 
 ```scss
 .notice {
@@ -327,7 +333,7 @@ $raw 1 -}} {{ $icon := (replace (index $.Site.Data.SVG $noticeType) "icon" "icon
 }
 ```
 
-3. 在`\blog\assets\scss\custom\_custom.scss`中导入`_shortcodes.scss`（前面已经导入则此处无需重复导入）
+3. 在`\blog\assets\scss\custom\_custom.scss`中导入样式（若前面已导入则无需重复导入）
 
 ```scss
 @import 'shortcodes';
@@ -387,7 +393,7 @@ This is tip
 
 ## github 风格
 
-1. 在`blog\layouts\shortcodes`下新建 {{<filename github.html>}} 文件，其内容如下：
+1. 在`blog\layouts\shortcodes\github.html`中增加以下内容：
 
 ```html
 <div class="github">
@@ -403,7 +409,7 @@ This is tip
 </div>
 ```
 
-2. 在 `\blog\assets\scss\custom\_shortcodes.scss` 中加入以下代码：
+2. 在 `\blog\assets\scss\custom\_shortcodes.scss` 中增加以下内容：
 
 ```scss
 .github {
