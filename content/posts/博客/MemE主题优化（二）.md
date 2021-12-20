@@ -11,19 +11,19 @@ dropCap: false
 
 > 说明：任何一项留空，浏览器都会回退到主体字体 `fontFamilyBody`，故没必要全部设置。此外，如果你的品牌栏用的 SVG，则可留空品牌栏字体。
 
-### 品牌栏
+{{< underline content="品牌栏" color="#ffdd00">}}
 
 ```toml
 fontFamilySiteBrand = "'Liu Jian Mao Cao', cursive"
 ```
 
-### 菜单栏
+{{< underline content="菜单栏" color="#ffdd00">}}
 
 ```toml
 fontFamilyMenu = ""
 ```
 
-### 各类标题
+{{< underline content="各类标题" color="#ffdd00">}}
 
 > 文章标题、文章副标题、列表标题、列表的年份和月份标题、相关文章标题、文章上下篇标题
 
@@ -32,16 +32,14 @@ fontFamilyMenu = ""
 fontFamilyTitle = "'Cinzel Decorative', 'Noto Serif SC', serif"
 ```
 
-### 目录、分节标题
-
-> 分节标题、目录标题
+{{< underline content="目录、分节标题" color="#ffdd00">}}
 
 ```toml
 #fontFamilyHeadings = "Comfortaa, sans-serif"
 fontFamilyHeadings = "'Cinzel Decorative', 'Noto Serif SC', serif"
 ```
 
-### 代码、上标
+{{< underline content="代码、上标" color="#ffdd00">}}
 
 > 代码、上标、文章元信息、文章更新徽章、文章的 Git 版本信息、极简页脚
 
@@ -50,43 +48,43 @@ fontFamilyHeadings = "'Cinzel Decorative', 'Noto Serif SC', serif"
 fontFamilyCode = "'Source Code Pro', 'Noto Serif SC', monospace"
 ```
 
-### 引用
+{{< underline content="引用" color="#ffdd00">}}
 
 ```toml
 fontFamilyQuote = "'EB Garamond', 'STKaiti', 'KaiTi', 'SimKai', 'Noto Serif SC', serif"
 ```
 
-### 文章目录
+{{< underline content="文章目录" color="#ffdd00">}}
 
 ```toml
 fontFamilyTOC = ""
 ```
 
-### 说明文字
+{{< underline content="说明文字" color="#ffdd00">}}
 
 ```toml
 fontFamilyCaption = ""
 ```
 
-### 页脚
+{{< underline content="页脚" color="#ffdd00">}}
 
 ```toml
 fontFamilyFooter = "'Ma Shan Zheng', cursive"
 ```
 
-### 主体
+{{< underline content="主体" color="#ffdd00">}}
 
 ```toml
 fontFamilyBody = "'EB Garamond', 'Noto Serif SC', serif"
 ```
 
-### 网络字体链接
+{{< underline content="网络字体链接" color="#ffdd00">}}
 
 ```toml
 fontsLink = "https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700,700i|Noto+Serif+SC:400,700|Source+Code+Pro:400,400i,700,700i|Cinzel+Decorative:700|Ma+Shan+Zheng:|Liu+Jian+Mao+Cao:&display=swap&subset=chinese-simplified"
 ```
 
-#### 具体设置方式
+> 具体设置方式
 
 进入https://fonts.google.com/ 之后，搜索或选择喜欢的字体库
 ![](/images/tech/2019/11/FontSelect.png '选择字体')
@@ -94,19 +92,25 @@ fontsLink = "https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700,70
 ![](/images/tech/2019/11/FontSelect2.png '勾选所需风格')
 点击`EMBED`标签
 ![](/images/tech/2019/11/FontSelect3.png '生成链接')
-这里有生成的字体链接：
 
-`https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,500,700&display=swap&subset=chinese-simplified`以及设置字体时填入的参数` 'Noto Serif SC', serif`
+{{< card >}}
+这里有生成的字体链接：`https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,500,700&display=swap&subset=chinese-simplified`以及设置字体时填入的参数` 'Noto Serif SC', serif`
+{{< /card >}}
 
+{{< card >}}
 例如，假设你的字体链接为`fontsLink = "https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700,700i|Noto+Serif+SC:400,700|Source+Code+Pro:400,400i,700,700i|Cinzel+Decorative:700&display=swap&subset=chinese-simplified"`
+{{< /card >}}
 
 现在你想给页脚`fontFamilyFooter`配置另一种字体，比如`ZCOOL XiaoWei`，去网站选择之后生成的信息如下：
 ![](/images/tech/2019/11/FontSelect4.png 'example')
+
+{{< card >}}
 现在你需要在原来的字体链接`&display=swap&subset=chinese-simplified`的前面加上`|ZCOOL+XiaoWei:`，然后设置`fontFamilyFooter = "'ZCOOL XiaoWei', serif"`，在本地预览一下，应该成功了！(注意观察上图生成的代码和你添加到配置文件中的区别)
+{{< /card >}}
 
 > 说明：要想读者一定体验到你设置的字体，最好采用网络字体。MemE 主题目前仅支持 Google Fonts 的链接，请前往 https://fonts.google.com/ 获取。此项留空，则不会采用网络字体。
 
-### 字号（单位：px）
+{{< underline content="字号（单位：px）" color="#ffdd00">}}
 
 ```toml
 fontSize = 16
@@ -125,7 +129,6 @@ lineHeight = 2
 ```toml
 # 是否开启
 enableParagraphIndent = true
-
 # 分段样式（全局设置）
 paragraphStyle = "margin"
 ```
@@ -145,25 +148,15 @@ enableJustify = true
 
 ```toml
 # 是否开启（全局设置）
+# 说明：文章的 Front Matter 中的 `dropCap`的优先级高于此处
 enableDropCap = true
-```
-
-> 说明：文章的 Front Matter 中的 `dropCap`的优先级高于此处
-
-```toml
 # 是否在每一分隔线之后首字下沉（全局设置）
+# 说明：文章的 Front Matter 中的 `dropCapAfterHr`的优先级高于此处
 enableDropCapAfterHr = false
-```
-
-> 说明：文章的 Front Matter 中的 `dropCapAfterHr`的优先级高于此处
-
-```toml
 # 是否删除首字下沉前的分隔线（全局设置）
+# 说明：文章的 Front Matter 中的 `deleteHrBeforeDropCap`的优先级高于此处
 deleteHrBeforeDropCap = false
 ```
-
-> 说明：文章的 Front Matter 中的 `deleteHrBeforeDropCap`的优先级高于此处
-
 ## 大型小写（英文）
 
 ```toml
@@ -231,7 +224,7 @@ relatedPostsNumber = 5
 relatedPostsIcon = "plus-circle"
 ```
 
-### 文章标签
+{{< underline content="文章标签" color="#ffdd00">}}
 
 ```toml
 # 是否开启
@@ -240,7 +233,7 @@ enablePostTags = true
 postTagsIcon = "tag"
 ```
 
-### 文章上下篇
+{{< underline content="文章上下篇" color="#ffdd00">}}
 
 > 说明：在 MemE 主题中，文章上下篇是从空间位置角度设计的，而不是像大多数其它主题所做的那样——从时间角度设计。因此，如果你点击左边的上篇，跳转的是一篇更新的文章；如果你点击右边的下篇，跳转的是一篇更旧的文章。
 
@@ -343,27 +336,23 @@ autoHideLangToggle = false
 
 ## 归档、分类及标签页样式
 
-### 归档样式代码：
+{{< underline content="归档样式" color="#ffdd00">}}
 
-在文件{{<filename list.scss>}}中：
-
-> ~~文件原始位置：`\themes\meme\assets\scss\_common\list.scss`~~
->
-> 文件位置更新为：`\themes\meme\assets\scss\layout\list.scss`
+> 文件位置：`\themes\meme\assets\scss\layout\list.scss`
 
 ```scss
-//归档页总标题（posts）
+// 归档页总标题（posts）
 .list-title {
   text-align: center;
 }
-//归档页文章列表
+// 归档页文章列表
 .list {
   ul {
     list-style: none;
     padding: 0;
   }
 }
-//文章列表
+// 文章列表
 .list-item {
   line-height: 2;
   position: relative;
@@ -393,19 +382,19 @@ autoHideLangToggle = false
     font-size: $fontSize;
   }
 }
-//列表中文章标题
+// 列表中文章标题
 .list-item-title {
   margin: 0 0.618em 0 2em;
   font-size: 1.1em;
   line-height: 1.2;
 }
-//列表中时间
+// 列表中时间
 .list-item-time {
   margin: 0 0.618em 0 2em;
   color: var(--color-contrast-medium);
   line-height: 1.2;
 }
-//年份
+// 年份
 .list-year {
   display: flex;
   justify-content: space-between;
@@ -413,7 +402,7 @@ autoHideLangToggle = false
 }
 ```
 
-### 分类样式代码：
+{{< underline content="分类样式" color="#ffdd00">}}
 
 > 文件位置：`\themes\meme\assets\scss\pages\_tree-categories.scss`
 
@@ -430,7 +419,7 @@ autoHideLangToggle = false
 }
 ```
 
-### 标签样式代码：
+{{< underline content="标签样式" color="#ffdd00">}}
 
 > 文件位置：`\themes\meme\assets\scss\pages\_tag-cloud.scss`
 
@@ -446,7 +435,7 @@ autoHideLangToggle = false
 
 ## 多媒体
 
-### audio 标签
+{{< underline content="audio 标签" color="#ffdd00">}}
 
 ```html
 <!--通过<audio>标签插入-->
@@ -464,7 +453,7 @@ DEMO:
   <embed height="50" width="100" src="https://zccon.oss-cn-beijing.aliyuncs.com/Hugo/audios/Lame.mp3">
 </audio>
 
-### video 标签
+{{< underline content="video 标签" color="#ffdd00">}}
 
 ```html
 <video poster="https://zccon.oss-cn-beijing.aliyuncs.com/images/%E5%A4%A9%E6%89%8D%E5%B0%91%E5%A5%B3.png" controls>
@@ -479,7 +468,7 @@ DEMO:
 <source src="https://zccon.oss-cn-beijing.aliyuncs.com/Hugo/videos/GeniusGirl.mp4">
 </video>
 
-### 网易云外链方式添加音乐
+{{< underline content="网易云外链方式添加音乐" color="#ffdd00">}}
 
 在网页版[网易云音乐](https://www.baidu.com/link?url=rMp-eLGywbp55zR56zgyg3mbCHH4-y1cFGrhdaBOeJi&wd=&eqid=885cca3900008090000000065de22b10)中搜索需要的歌（不支持 ..无版权.. 或 ..会员.. 歌曲）
 
