@@ -5,7 +5,7 @@
 // @import "font";
 
 // 简码设定
-@import "shortcodes";
+@import 'shortcodes';
 
 // 正文设定
 // @import "post";
@@ -14,19 +14,19 @@
 // @import "subscription";
 
 // 友链
-@import "blogroll";
+@import 'blogroll';
 
 // 卡片样式
-@import "card";
+@import 'card';
 
 // 渐变字体
-@import "colorfont";
+@import 'colorfont';
 
 // 百度搜索框
-@import "baidu";
+@import 'baidu';
 
 // 文件名背景色
-@import "filename";
+@import 'filename';
 
 // 一行多图
 // @import "gallery";
@@ -37,7 +37,17 @@
 // sw 更新提醒
 // @import "sw-notification";
 
-html[data-theme="dark"] {
-    --waline-bgcolor: hsl(231, 14%, 10%);
-    --waline-bgcolor-light:  hsla(var(--color-contrast-lower-h), var(--color-contrast-lower-s), var(--color-contrast-lower-l), 0.5);
+html[data-theme='dark'] {
+  --waline-bgcolor: hsl(231, 14%, 10%);
+  --waline-bgcolor-light: hsla(
+    var(--color-contrast-lower-h),
+    var(--color-contrast-lower-s),
+    var(--color-contrast-lower-l),
+    0.5
+  );
+}
+
+// 脚注问题
+.MJXc-display {
+  display: inline !important;
 }

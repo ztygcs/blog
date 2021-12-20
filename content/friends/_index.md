@@ -1,42 +1,37 @@
 ---
 title: '友情链接'
-badge: false
+badge: true
 displayCopyright: false
 share: false
+description: "欢迎光临 ~ 🐱"
 ---
 
-<div class="blogroll">
-	<img class="avatar medium-zoom-image" src="https://io-oi.me/icons/android-chrome-512x512.png">
-	<a class="friend" href="https://io-oi.me/" target="_blank">
-		<div class="name">reuixiy</div>
-		<div class="excerpt">「一休儿」的生活与技术博客</div>
-	</a>
+<div class="blogroll-link">
+{{< friends
+imgSrc="https://io-oi.me/icons/android-chrome-512x512.png"
+blogSrc="https://io-oi.me/"
+name="reuixiy"
+desc="「一休儿」的生活与技术博客">}}
+
+{{< friends
+imgSrc="https://guanqr.com/icons/android-chrome-512x512.png"
+blogSrc="https://guanqr.com/"
+name="荷戟独彷徨"
+desc="爱光学，爱生活，爱创造">}}
+
+{{< friends
+imgSrc="https://cdn.jsdelivr.net/gh/WithdewHua/static@withdewhua-hugo/img/avatar.jpg"
+blogSrc="https://10101.io/"
+name="花着露于方寸间"
+desc="松花酿酒，春水煎茶">}}
+
+{{< friends
+imgSrc="https://matnoble.me/icons/android-chrome-512x512.png"
+blogSrc="https://matnoble.me/"
+name="MatNoble"
+desc="数学＆计算机 我都爱">}}
+
 </div>
-<div class="blogroll">
-	<img class="avatar medium-zoom-image" src="https://guanqr.com/icons/android-chrome-512x512.png">
-	<a class="friend" href="https://guanqr.com/" target="_blank">
-		<div class="name">荷戟独彷徨</div>
-		<div class="excerpt">爱光学，爱生活，爱创造</div>
-	</a>
-</div>
-<div class="blogroll">
-	<img class="avatar medium-zoom-image" src="https://cdn.jsdelivr.net/gh/WithdewHua/static@withdewhua-hugo/img/avatar.jpg">
-	<a class="friend" href="https://10101.io/" target="_blank">
-		<div class="name">花着露于方寸间</div>
-		<div class="excerpt">松花酿酒，春水煎茶</div>
-	</a>
-</div>
-<div class="blogroll">
-	<img class="avatar medium-zoom-image" src="https://matnoble.me/icons/android-chrome-512x512.png">
-	<a class="friend" href="https://matnoble.me/" target="_blank">
-		<div class="name">MatNoble</div>
-		<div class="excerpt">数学＆计算机 我都爱</div>
-	</a>
-</div>
-<br>
-{{< notice notice-info>}}
-以上友链按添加时间先后排序。
-{{< /notice >}}
 
 {{< card >}}
 {{< align center "本站信息" >}}

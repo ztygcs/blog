@@ -475,3 +475,89 @@ repository = '<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 
 ```
 
 {{< github name="hugo-theme-meme" link="https://github.com/reuixiy/hugo-theme-meme" description="MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。MemE 主题专注于优雅、简约、现代，以及代码的正确性。同时，希望你将像欣赏一个模因一样欣赏 MemE，希望你将像分享一个模因一样分享 MemE，就像你的博客和文章所做的那样😝！" color="#E34C26" language="HTML" >}}
+
+## 友链样式
+
+1. 在`blog\layouts\shortcodes\friends.html`中增加以下内容：
+
+```html
+<div class="blogroll">
+  <img class="avatar medium-zoom-image" src="{{ .Get "imgSrc" }}" />
+  <a class="friend" href="{{ .Get "blogSrc" }}" target="_blank">
+    <div class="name">{{ .Get "name" }}</div>
+    <div class="excerpt">{{ .Get "desc" }}</div>
+  </a>
+</div>
+```
+
+2. 在`\blog\assets\scss\custom\_blogroll.scss`中增加以下内容：
+
+```scss
+// 友链样式
+.blogroll-link::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.blogroll-link {
+  display: grid;
+  grid-gap: 0 1.5em;
+  grid-template-columns: 1fr 1fr;
+}
+
+.blogroll {
+  padding: 1em 0;
+  border-bottom: 1px dashed var(--color-contrast-low);
+  display: flex;
+  transition: all 0.5s;
+  text-decoration: none !important;
+  overflow: hidden;
+  .friend {
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .name {
+    font-weight: bold;
+    margin: 0.375em 0;
+  }
+  .excerpt {
+    font-size: 0.875em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .avatar {
+    width: 4em !important;
+    height: 4em !important;
+    border-radius: 8px;
+    margin: 0 1em 0 0 !important;
+    z-index: 0;
+  }
+}
+
+@media (max-width: $maxWidth) {
+  .blogroll-link {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+3. 示例
+
+```html
+{{</* friends
+imgSrc="https://ztygcs.github.io/icons/android-chrome-512x512.png"
+blogSrc="https://ztygcs.github.io/"
+name="我有一只猫"
+desc="学习笔记，生活杂碎"
+*/>}}
+```
+
+{{< friends
+imgSrc="https://ztygcs.github.io/icons/android-chrome-512x512.png"
+blogSrc="https://ztygcs.github.io/"
+name="我有一只猫"
+desc="学习笔记，生活杂碎" >}}

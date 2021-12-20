@@ -11,7 +11,7 @@ badge: false
 
 ## 学习之前
 
-### 理论基础
+**{{<underline color="#ffdd00" content="理论基础" >}}**
 
 TypeScript 并不是一门新的语言，准确来说它是 JavaScript 的超集。也就是说所有合法的 JavaScript 语言都可以在 TypeScript 中运行。
 
@@ -21,7 +21,7 @@ TypeScript 并不是一门新的语言，准确来说它是 JavaScript 的超集
 注意：TypeScript 无法在浏览器中运行,因此我们编写完了 TypeScript 代码后需要借助编译器将 TypeScript 语言翻译成 JavaScript。
 {{< /notice >}}
 
-### 开发环境
+**{{<underline color="#ffdd00" content="开发环境" >}}**
 
 在命令行中输入`npm install -g typescript`完成 TypeScript 的全局安装
 
@@ -50,7 +50,7 @@ node test.js
 
 ## 基础类型学习
 
-### 数字
+**{{<underline color="#ffdd00" content="数字" >}}**
 
 `number`类型既能表示整数也能表示浮点数，甚至也可以表示正负数
 
@@ -65,13 +65,13 @@ add('1', 2) //报错
 
 > 限制 add 参数 n1 和 n2 必须为 number 类型
 
-### 布尔
+**{{<underline color="#ffdd00" content="布尔" >}}**
 
 ```ts
 let isTrue: boolean
 ```
 
-### 字符串
+**{{<underline color="#ffdd00" content="字符串" >}}**
 
 字符串|说明
 :-:|:-:
@@ -84,7 +84,7 @@ let text1: string = 'hello'
 let text2 = `${text1} world` //``定义模板字符串
 ```
 
-### 数组
+**{{<underline color="#ffdd00" content="数组" >}}**
 
 数组中可以存放任意类型的数据，并且可以同时存在
 
@@ -102,21 +102,21 @@ let list4 = [1, 'ddd']
 let list5: any[] = [1, 'a', true]
 ```
 
-### 元组
+**{{<underline color="#ffdd00" content="元组" >}}**
 
 ```ts
 // 其实是一个固定长度、固定类型的数组
 let list1: [number, string] = [1, '张三']
 ```
 
-### 联合
+**{{<underline color="#ffdd00" content="联合" >}}**
 
 ```ts
 // 一个变量可以同时支持两个或多个类型
 let union: string | number
 ```
 
-### 字面量
+**{{<underline color="#ffdd00" content="字面量" >}}**
 
 ```ts
 // 不仅确定类型范围，同时确定了取值范围
@@ -125,7 +125,7 @@ let literal: 0 | 1 | 2
 let literal2: 1 | 'hello' | true | [1, 2, 3, 4]
 ```
 
-### 枚举
+**{{<underline color="#ffdd00" content="枚举" >}}**
 
 > 枚举类型，顺序默认从 0 开始，也可自定义
 
@@ -156,7 +156,7 @@ enum Color {
 }
 ```
 
-### any
+**{{<underline color="#ffdd00" content="any" >}}**
 
 > 任意类型,any 类型的变量其类型可变
 
@@ -167,11 +167,11 @@ randomValue = 'hello'
 randomValue = {}
 ```
 
-### unknow
+**{{<underline color="#ffdd00" content="unknow" >}}**
 
 定义为 unknow 类型的变量在一定时候需要做逻辑判断，相比较 any 来说更安全
 
-### void、undefined 与 never
+**{{<underline color="#ffdd00" content="void、undefined 与 never" >}}**
 
 - void：不存在
 - undefined：存在但未定义
@@ -206,7 +206,7 @@ let message: any
 
 ## 面向对象
 
-### 对象 Object
+**{{<underline color="#ffdd00" content="对象 Object" >}}**
 
 ```ts
 const person = {
@@ -227,7 +227,7 @@ const person ：{
 }
 ```
 
-### interface 与 class
+**{{<underline color="#ffdd00" content="interface 与 class" >}}**
 
 ```ts
 let drawPoint = (point:Point) =>{
