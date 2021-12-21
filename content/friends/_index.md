@@ -35,7 +35,7 @@ desc="数学＆计算机 我都爱">}}
 
 {{< card >}}
 {{< align center "本站信息" >}}
-网站名称：我有一只猫
+网站名称：一路向北
 
 网站地址：https://ztygcs.github.io/
 

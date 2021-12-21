@@ -2,7 +2,7 @@
 # 站点配置
 
 baseURL = "https://ztygcs.github.io"
-title = "我有一只猫"
+title = "一路向北"
 languageCode = "zh-CN"
 hasCJKLanguage = true
 # 版权信息（支持 Markdown）
@@ -91,7 +91,7 @@ uglyURLs = false
 # 作者信息
 [author]
     # 名字
-    name = "我有一只猫"
+    name = "一路向北"
     # 邮箱
     email = "zccon1996@163.com"
     # 座右铭或简介
@@ -894,7 +894,8 @@ uglyURLs = false
     #      SVG，则可留空（""）品牌栏字体。
 
     # 品牌栏
-    fontFamilySiteBrand = "'Liu Jian Mao Cao', cursive"
+    # fontFamilySiteBrand = "'Liu Jian Mao Cao', cursive"
+    fontFamilySiteBrand = "'Ma Shan Zheng', cursive"
     # 菜单栏
     fontFamilyMenu = ""
     # 文章标题、文章副标题、列表标题、列表的年份和月份标题、相关文章标题、文章上下篇标题、表格的表头、定义列表中的术语

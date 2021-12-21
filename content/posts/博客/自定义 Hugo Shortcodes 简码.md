@@ -551,7 +551,7 @@ repository = '<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 
 {{</* friends
 imgSrc="https://ztygcs.github.io/icons/android-chrome-512x512.png"
 blogSrc="https://ztygcs.github.io/"
-name="我有一只猫"
+name="一路向北"
 desc="学习笔记，生活杂碎"
 */>}}
 ```
@@ -559,5 +559,5 @@ desc="学习笔记，生活杂碎"
 {{< friends
 imgSrc="https://ztygcs.github.io/icons/android-chrome-512x512.png"
 blogSrc="https://ztygcs.github.io/"
-name="我有一只猫"
+name="一路向北"
 desc="学习笔记，生活杂碎" >}}

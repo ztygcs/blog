@@ -1,7 +1,7 @@
 ---
-title: "About"
+title: 'About'
 badge: false
-description: ""
+description: ''
 ---
 
 <!--来源：https://aplayer.js.org/#/zh-Hans/-->
@@ -10,10 +10,10 @@ description: ""
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
-<div 
-  class="aplayer" 
-  data-id="5053280448" 
-  data-server="netease" 
+<div
+  class="aplayer"
+  data-id="5053280448"
+  data-server="netease"
   data-type="playlist"
   data-fixed="false"
   data-mini="false"
@@ -22,7 +22,7 @@ description: ""
   data-theme="#07b39b2a">
 </div> -->
 
-![草](/images/bg/草.jpg "草")
+![草](/images/bg/草.jpg '草')
 
 {{< quote-center >}}
 用撼动一座岩石的力量<br/>
