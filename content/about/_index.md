@@ -2,6 +2,7 @@
 title: 'About'
 badge: false
 description: ''
+gitinfo: false
 ---
 
 <!--来源：https://aplayer.js.org/#/zh-Hans/-->

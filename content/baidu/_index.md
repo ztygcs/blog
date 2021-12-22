@@ -4,6 +4,7 @@ badge: false
 description: "百度一下"
 displayCopyright: false
 share: false
+gitinfo: false
 ---
 
 <div class="searchbar">
