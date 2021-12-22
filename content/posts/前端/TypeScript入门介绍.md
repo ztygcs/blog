@@ -17,7 +17,7 @@ TypeScript 并不是一门新的语言，准确来说它是 JavaScript 的超集
 
 > TypeScript 给 JavaScript 带来了强类型的定义。
 
-{{< notice notice-warning >}}
+{{< notice error >}}
 注意：TypeScript 无法在浏览器中运行,因此我们编写完了 TypeScript 代码后需要借助编译器将 TypeScript 语言翻译成 JavaScript。
 {{< /notice >}}
 

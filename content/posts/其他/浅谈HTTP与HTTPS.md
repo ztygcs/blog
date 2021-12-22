@@ -23,7 +23,7 @@ badge: false
 > 2. 用户访问网站 以{{<underline color="#ff2200" content="http://" >}}打头
 > 3. HTTP 协议以{{<underline color="#ff2200" content="明文" >}}方式发送内容，{{<underline color="#ff2200" content="不安全" >}}
 
-{{<notice notice-warning>}}
+{{<notice error>}}
 注：HTTP 协议不提供任何方式的数据加密，如果攻击者截取了 Web 浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息，因此，HTTP 协议不适合传输一些敏感信息，比如：信用卡号、密码等支付信息。
 {{</notice>}}
 
@@ -31,7 +31,7 @@ badge: false
 >2. 用户访问网站 以{{<underline color="#ff2200" content="https://" >}}打头
 >3. HTTPS 经由 HTTP 进行通信，但利用 SSL（Secure Socket Layer,安全套接字层）/TLS（Transport Layer Security,运输层安全） 来{{<underline color="#ff2200" content="加密" >}}数据包。{{<underline color="#ff2200" content="安全" >}}
 
-{{<notice notice-warning>}}
+{{<notice error>}}
 注：HTTPS 开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。
 {{</notice>}}
 

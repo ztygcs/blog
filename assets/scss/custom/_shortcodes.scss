@@ -210,7 +210,7 @@ blockquote.quote-center {
       height: 1.2em;
     }
   }
-  &.notice-warning {
+  &.error {
     background: hsla(0, 65%, 65%, 0.25);
     border-left: 5px solid hsl(0, 65%, 55%);
     word-break: break-all;
@@ -218,7 +218,7 @@ blockquote.quote-center {
       color: hsl(0, 65%, 55%);
     }
   }
-  &.notice-info {
+  &.warning {
     background: hsla(30, 80%, 70%, 0.25);
     border-left: 5px solid hsl(30, 80%, 55%);
     word-break: break-all;
@@ -226,7 +226,7 @@ blockquote.quote-center {
       color: hsl(30, 80%, 55%);
     }
   }
-  &.notice-note {
+  &.tip {
     background: hsla(200, 65%, 65%, 0.25);
     border-left: 5px solid hsl(200, 65%, 55%);
     word-break: break-all;
@@ -234,7 +234,7 @@ blockquote.quote-center {
       color: hsl(200, 65%, 55%);
     }
   }
-  &.notice-tip {
+  &.success {
     background: hsla(140, 65%, 65%, 0.25);
     border-left: 5px solid hsl(140, 65%, 55%);
     word-break: break-all;
@@ -245,33 +245,34 @@ blockquote.quote-center {
 }
 
 [data-theme='dark'] .notice {
-  &.notice-warning {
-    background: hsla(0, 25%, 35%, 0.35);
-    border-left: 5px solid hsl(0, 25%, 45%);
+  box-shadow: none;
+  &.error {
+    background: hsla(0, 29%, 41%, 0.65);
+    border-left: 5px solid hsl(0, 67%, 50%);
     // word-break: break-all;
     .notice-title {
-      color: hsl(0, 25%, 45%);
+      color: hsl(0, 67%, 50%);
     }
   }
-  &.notice-info {
-    background: hsla(30, 25%, 35%, 0.35);
-    border-left: 5px solid hsl(30, 25%, 45%);
+  &.warning {
+    background: hsla(28, 46%, 58%, 0.493);
+    border-left: 5px solid hsl(30, 72%, 50%);
     .notice-title {
-      color: hsl(30, 25%, 45%);
+      color: hsl(30, 72%, 50%);
     }
   }
-  &.notice-note {
-    background: hsla(200, 25%, 35%, 0.35);
-    border-left: 5px solid hsl(200, 25%, 45%);
+  &.tip {
+    background: hsla(200, 56%, 55%, 0.548);
+    border-left: 5px solid hsl(200, 74%, 57%);
     .notice-title {
-      color: hsl(200, 25%, 45%);
+      color: hsl(200, 74%, 57%);
     }
   }
-  &.notice-tip {
-    background: hsla(140, 25%, 35%, 0.35);
-    border-left: 5px solid hsl(140, 25%, 45%);
+  &.success {
+    background: hsla(140, 35%, 44%, 0.603);
+    border-left: 5px solid hsl(140, 73%, 55%);
     .notice-title {
-      color: hsl(140, 25%, 45%);
+      color: hsl(140, 73%, 55%);
     }
   }
 }

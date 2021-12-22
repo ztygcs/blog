@@ -18,7 +18,7 @@ dropCap: true
 
 在 `我的电脑 --> 属性 --> 高级系统设置 --> 环境变量 --> 系统变量 --> Path` 中增加一条`D:\Hugo\bin`，即解压后的 hugo.exe 文件存放的目录。
 
-{{< notice notice-note >}}
+{{< notice tip >}}
 {{<underline color="#7db9de" content="D:\Hugo\bin">}}修改为自己对应文件位置路径
 {{< /notice >}}
 
@@ -38,7 +38,7 @@ hugo version
 hugo new site myblog
 ```
 
-{{< notice notice-note >}}
+{{< notice tip >}}
 命令执行完成之后在`D:\Hugo\Sites\myblog`文件夹下会自动生成博客需要的文件
 {{< /notice >}}
 
@@ -103,7 +103,7 @@ hugo server -D
 hugo --theme=meme --baseUrl="https://ztygcs.github.io/" --buildDrafts
 ```
 
-{{< notice notice-note >}}
+{{< notice tip >}}
 在当前myblog文件夹下会生成 public 文件夹
 {{< /notice >}}
 
