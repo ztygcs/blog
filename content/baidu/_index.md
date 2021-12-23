@@ -1,7 +1,7 @@
 ---
-title: "search"
+title: 'search'
 badge: false
-description: "百度一下"
+description: '百度一下'
 displayCopyright: false
 share: false
 gitinfo: false
@@ -12,5 +12,3 @@ gitinfo: false
 		<input class="baidu" type="text" placeholder="" autocomplete="off" name="word">
 	</form>
 </div>
-
-
