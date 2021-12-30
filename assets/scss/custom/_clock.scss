@@ -1,0 +1,42 @@
+.home_clock {
+  display: flex;
+  justify-content: center;
+  margin-top: 25%;
+}
+.hour_marker {
+  fill: transparent;
+  stroke: var(--color-contrast-high);
+  stroke-width: 7;
+  stroke-dasharray: 0.2, 4.8;
+  stroke-dashoffset: 0.1;
+}
+.minute_marker {
+  fill: transparent;
+  stroke: var(--color-contrast-low);
+  stroke-width: 7;
+  stroke-dasharray: 0.2, 0.8;
+  stroke-dashoffset: 0.1;
+}
+.hand {
+  stroke: var(--color-contrast-low);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.hand--thick {
+  stroke-width: 7;
+}
+.hand--second {
+  stroke: #ffdd00;
+}
+.center {
+  fill: #7b0828;
+  stroke-width: 2;
+  stroke: white;
+}
+.clock_text {
+  fill: var(--color-contrast-high);
+  font-family: 'Roboto', sans-serif;
+  text-anchor: middle;
+  cursor: pointer;
+  user-select: none;
+}
